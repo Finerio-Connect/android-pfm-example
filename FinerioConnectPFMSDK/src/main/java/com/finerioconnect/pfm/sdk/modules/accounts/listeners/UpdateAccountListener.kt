@@ -1,0 +1,14 @@
+package com.finerioconnect.pfm.sdk.modules.accounts.listeners
+
+import com.finerioconnect.core.sdk.models.FCAccount
+import com.finerioconnect.core.sdk.models.FCError
+
+interface UpdateAccountListener {
+
+    fun accountUpdated(account: FCAccount)
+
+    fun error(errors: List<FCError>)
+
+    fun severError(serverError: Throwable)
+
+}
