@@ -12,8 +12,8 @@ class InsightsDataManager {
     fun getSummary(
         userId: Int,
         accountId: Int?,
-        dateFrom: Number,
-        dateTo: Number,
+        dateFrom: Long?,
+        dateTo: Long?,
         listener: GetSummaryListener
     ) {
         GetSummaryRepositoryImpl(GetSummaryDatasourceImpl())

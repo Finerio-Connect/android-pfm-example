@@ -89,8 +89,8 @@ interface FinerioPFMApi: FinerioConnectApi {
         @HeaderMap headers: Map<String, String>,
         @Query("userId") userId: Int,
         @Query("accountId") accountId: Int?,
-        @Query("dateFrom") dateFrom: Number,
-        @Query("dateTo") dateTo: Number,
+        @Query("dateFrom") dateFrom: Long?,
+        @Query("dateTo") dateTo: Long?,
     ): Observable<Result<FCSummaryResponse>>
 
     //Budgets service

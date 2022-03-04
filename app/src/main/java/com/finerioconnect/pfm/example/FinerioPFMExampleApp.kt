@@ -4,7 +4,7 @@ import android.app.Application
 import com.finerioconnect.pfm.sdk.core.FinerioConnectPFMSDK
 import com.finerioconnect.sdk.core.FinerioConnectSDK
 
-class FinerioPFMExample : Application() {
+class FinerioPFMExampleApp : Application() {
 
     override fun onCreate() {
         super.onCreate()

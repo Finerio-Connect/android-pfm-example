@@ -14,7 +14,7 @@ class GetSummaryRepositoryImpl constructor(
         this.listener = listener
     }
 
-    override fun getSummary(userId: Int, accountId: Int?, dateFrom: Number, dateTo: Number) {
+    override fun getSummary(userId: Int, accountId: Int?, dateFrom: Long?, dateTo: Long?) {
         datasource
             .success {
                 listener?.summary(it)

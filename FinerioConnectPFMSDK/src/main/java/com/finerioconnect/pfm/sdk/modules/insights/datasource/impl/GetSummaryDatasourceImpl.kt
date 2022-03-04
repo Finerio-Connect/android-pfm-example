@@ -8,7 +8,7 @@ import com.finerioconnect.pfm.sdk.modules.insights.datasource.GetSummaryDatasour
 
 class GetSummaryDatasourceImpl : BaseDatasourceImpl<FCSummaryResponse>(), GetSummaryDatasource {
 
-    override fun getSummary(userId: Int, accountId: Int?, dateFrom: Number, dateTo: Number) {
+    override fun getSummary(userId: Int, accountId: Int?, dateFrom: Long?, dateTo: Long?) {
         FinerioConnectPFMSDK.shared.api.getSummary(getHeaders(), userId, accountId, dateFrom, dateTo).request()
     }
 
