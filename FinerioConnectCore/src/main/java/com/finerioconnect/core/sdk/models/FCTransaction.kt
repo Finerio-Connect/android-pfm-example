@@ -22,7 +22,7 @@ data class FCTransaction(
     @Json(name = "charge") val charge: Boolean,
     @Json(name = "description") val description: String,
     @Json(name = "amount") val amount: Double,
-    @Json(name = "categoryId") val categoryId: Int,
+    @Json(name = "categoryId") val categoryId: Int?,
     @Json(name = "dateCreated") val dateCreated: Long,
     @Json(name = "lastUpdated") val lastUpdated: Long
 )

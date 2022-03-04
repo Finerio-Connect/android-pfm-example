@@ -5,6 +5,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class FCMovementsByDate(
-    @Json(name = "date") val date : Int,
+    @Json(name = "date") val date : Long,
     @Json(name = "transactions") val transactions : List<FCTransaction>
 )

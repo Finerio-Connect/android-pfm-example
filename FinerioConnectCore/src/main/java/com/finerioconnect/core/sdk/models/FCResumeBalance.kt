@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class FCResumeBalance(
-    @Json(name = "date") val date : Int,
+    @Json(name = "date") val date : Long,
     @Json(name = "incomes") val incomes : Double,
     @Json(name = "expenses") val expenses : Double
 )
