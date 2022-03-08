@@ -25,10 +25,10 @@ class UsersDataManager {
             .getUser(id)
     }
 
-    fun update(id: Int, budget: FCUpdateUserRequest, listener: UpdateUserListener) {
+    fun update(id: Int, user: FCUpdateUserRequest, listener: UpdateUserListener) {
         UpdateUserRepositoryImpl(UpdateUserDataSourceImpl())
             .setListener(listener)
-            .updateUser(id, budget)
+            .updateUser(id, user)
     }
 
     fun delete(id: Int, listener: DeleteUserListener) {

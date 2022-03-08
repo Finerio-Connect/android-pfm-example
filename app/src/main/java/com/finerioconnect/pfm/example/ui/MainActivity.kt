@@ -8,9 +8,10 @@ import com.finerioconnect.pfm.example.R
 import com.finerioconnect.pfm.example.databinding.ActivityMainBinding
 import com.finerioconnect.pfm.example.ui.accounts.AccountsExampleFragment
 import com.finerioconnect.pfm.example.ui.budgets.BudgetsExampleFragment
+import com.finerioconnect.pfm.example.ui.movements.MovementsExampleFragment
 import com.finerioconnect.pfm.example.ui.summary.SummaryExampleFragment
-import com.finerioconnect.pfm.example.ui.transactions.TransactionsExampleFragment
 import com.finerioconnect.sdk.account.core.FinerioAccountSDK
+import com.finerioconnect.sdk.analysis.core.FinerioAnalysisSDK
 import com.finerioconnect.sdk.budget.core.FinerioBudgetSDK
 import com.finerioconnect.sdk.summary.core.FinerioSummarySDK
 import com.finerioconnect.sdk.transaction.core.FinerioTransactionSDK
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     private lateinit var mBinding: ActivityMainBinding
 
     private val mSummaryExampleFragment = SummaryExampleFragment()
-    private val mTransactionsExampleFragment = TransactionsExampleFragment()
+    private val mMovementsExampleFragment = MovementsExampleFragment()
     private val mAccountsExampleFragment = AccountsExampleFragment()
     private val mBudgetsExampleFragment = BudgetsExampleFragment()
 
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         FinerioSummarySDK.shared.configure(this)
         FinerioAccountSDK.shared.configure(this)
         FinerioTransactionSDK.shared.configure(this)
+        FinerioAnalysisSDK.shared.configure(this)
         FinerioBudgetSDK.shared.configure(this)
 
         mBinding.bottomNavigation.setOnItemSelectedListener(this)
@@ -50,8 +52,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         R.id.accountsMenu -> {
             move(id) { transition(mAccountsExampleFragment) }
         }
-        R.id.transactionsMenu -> {
-            move(id) { transition(mTransactionsExampleFragment) }
+        R.id.movementsMenu -> {
+            move(id) { transition(mMovementsExampleFragment) }
         }
         R.id.budgetsMenu -> {
             move(id) { transition(mBudgetsExampleFragment) }

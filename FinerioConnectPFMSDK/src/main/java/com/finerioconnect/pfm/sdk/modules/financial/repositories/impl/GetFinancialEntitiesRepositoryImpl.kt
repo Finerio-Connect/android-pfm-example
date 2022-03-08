@@ -13,7 +13,7 @@ class GetFinancialEntitiesRepositoryImpl constructor(
         this.listener = listener
     }
 
-    override fun getFinancialEntities(userId: Int, cursor: Int?) {
+    override fun getFinancialEntities(cursor: Int?) {
         datasource
             .success {
                 listener?.financialEntitiesObtained(it)
@@ -24,7 +24,7 @@ class GetFinancialEntitiesRepositoryImpl constructor(
             .severError {
                 listener?.severError(it)
             }
-        datasource.getFinancialEntities(userId, cursor)
+        datasource.getFinancialEntities(cursor)
     }
 
     override fun cancelRequest() {

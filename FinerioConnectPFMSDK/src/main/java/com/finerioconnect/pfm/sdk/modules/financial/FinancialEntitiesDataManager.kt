@@ -17,10 +17,10 @@ class FinancialEntitiesDataManager {
             .createFinancialEntity(financialEntity)
     }
 
-    fun getAll(userId: Int, cursor: Int?, listener: GetFinancialEntitiesListener) {
+    fun getAll(cursor: Int?, listener: GetFinancialEntitiesListener) {
         GetFinancialEntitiesRepositoryImpl(GetFinancialEntitiesDatasourceImpl())
             .setListener(listener)
-            .getFinancialEntities(userId, cursor)
+            .getFinancialEntities(cursor)
     }
 
     fun get(id: Int, listener: GetFinancialEntityListener) {
