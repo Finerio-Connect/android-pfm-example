@@ -5,21 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.finerioconnect.core.sdk.models.FCAccount
 import com.finerioconnect.core.sdk.models.FCCategory
 import com.finerioconnect.core.sdk.models.FCError
 import com.finerioconnect.core.sdk.models.FCTransaction
 import com.finerioconnect.pfm.example.databinding.FragmentTransactionsExampleBinding
 import com.finerioconnect.pfm.example.mappers.getFCCategories
+import com.finerioconnect.pfm.example.mappers.getFCTransaction
 import com.finerioconnect.pfm.sdk.core.FinerioApi
-import com.finerioconnect.pfm.sdk.modules.accounts.listeners.GetAccountsListener
 import com.finerioconnect.pfm.sdk.modules.categories.listeners.GetCategoriesListener
 import com.finerioconnect.pfm.sdk.modules.transactions.listeners.GetTransactionsListener
 import com.finerioconnect.sdk.transaction.core.FinerioTransactionSDK
 import com.finerioconnect.sdk.transaction.ui.listeners.OnFCTransactionListListener
 
 class TransactionsExampleFragment : Fragment(), OnFCTransactionListListener, GetCategoriesListener,
-    GetAccountsListener, GetTransactionsListener {
+    GetTransactionsListener {
 
     private lateinit var mBinding: FragmentTransactionsExampleBinding
 
@@ -39,7 +38,7 @@ class TransactionsExampleFragment : Fragment(), OnFCTransactionListListener, Get
         mBinding.fcTransactionListView.apply {
             setFragmentActivity(requireActivity())
             setListener(this@TransactionsExampleFragment)
-            setTransactions(mutableListOf())
+
         }
         FinerioApi().categories().getAll(371720, null, this)
     }
@@ -51,22 +50,15 @@ class TransactionsExampleFragment : Fragment(), OnFCTransactionListListener, Get
     override fun categories(categories: List<FCCategory>, nextCursor: Int) {
         mFcCategories.clear()
         mFcCategories.addAll(getFCCategories(categories))
-        FinerioTransactionSDK.shared.categories = mFcCategories
-
-        FinerioApi().accounts().getAll(371720, 0, this)
-    }
-
-    override fun accounts(accounts: List<FCAccount>, nextCursor: Int) {
         FinerioTransactionSDK.shared.credentials = arrayListOf()
+        FinerioTransactionSDK.shared.categories = mFcCategories
 
         FinerioApi().transactions().getAll(743438, HashMap(), this)
     }
 
-    override fun transactions(
-        transactions: List<FCTransaction>,
-        nextCursor: Int
-    ) {
-
+    override fun transactions(transactions: List<FCTransaction>, nextCursor: Int) {
+        val fcTransactions = getFCTransaction(transactions, mFcCategories)
+        mBinding.fcTransactionListView.setTransactions(fcTransactions)
     }
 
     override fun error(errors: List<FCError>) {

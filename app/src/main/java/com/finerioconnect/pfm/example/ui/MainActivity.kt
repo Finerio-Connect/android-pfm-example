@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+        setSupportActionBar(mBinding.toolbar)
 
         FinerioSummarySDK.shared.configure(this)
         FinerioAccountSDK.shared.configure(this)
