@@ -4,6 +4,6 @@ import com.finerioconnect.pfm.sdk.modules.financial.listeners.GetFinancialEntiti
 
 interface GetFinancialEntitiesRepository {
     fun setListener(listener: GetFinancialEntitiesListener): GetFinancialEntitiesRepository
-    fun getFinancialEntities(userId: Int, cursor: Int?)
+    fun getFinancialEntities(cursor: Int?)
     fun cancelRequest()
 }

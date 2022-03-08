@@ -9,8 +9,8 @@ import com.finerioconnect.pfm.sdk.modules.financial.datasource.GetFinancialEntit
 class GetFinancialEntitiesDatasourceImpl : BaseDatasourceImpl<FCFinancialEntitiesResponse>(),
     GetFinancialEntitiesDatasource {
 
-    override fun getFinancialEntities(userId: Int, cursor: Int?) {
-        FinerioConnectPFMSDK.shared.api.getFinancialEntities(getHeaders(), userId, cursor).request()
+    override fun getFinancialEntities(cursor: Int?) {
+        FinerioConnectPFMSDK.shared.api.getFinancialEntities(getHeaders(), cursor).request()
     }
 
     override fun success(success: (FCFinancialEntitiesResponse) -> Unit) = apply {

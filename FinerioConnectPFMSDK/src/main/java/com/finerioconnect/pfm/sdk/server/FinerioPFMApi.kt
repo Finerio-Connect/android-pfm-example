@@ -82,17 +82,6 @@ interface FinerioPFMApi: FinerioConnectApi {
         @Path("id") accountId: Int
     ): Observable<Result<Unit>>
 
-    //Summary service
-
-    @GET("f4f8faab7f280eaf05fc812c285c7902f6a6d05a")
-    fun getSummary(
-        @HeaderMap headers: Map<String, String>,
-        @Query("userId") userId: Int,
-        @Query("accountId") accountId: Int?,
-        @Query("dateFrom") dateFrom: Long?,
-        @Query("dateTo") dateTo: Long?,
-    ): Observable<Result<FCSummaryResponse>>
-
     //Budgets service
 
     @POST("205e33ba58fee3ee07ef1a8cccc4ba9b97d3caf2")
@@ -127,9 +116,20 @@ interface FinerioPFMApi: FinerioConnectApi {
         @Path("id") id: Int
     ): Observable<Result<Unit>>
 
+    //Summary service
+
+    @GET("f4f8faab7f280eaf05fc812c285c7902f6a6d05a")
+    fun getSummary(
+        @HeaderMap headers: Map<String, String>,
+        @Query("userId") userId: Int,
+        @Query("accountId") accountId: Int?,
+        @Query("dateFrom") dateFrom: Long?,
+        @Query("dateTo") dateTo: Long?,
+    ): Observable<Result<FCSummaryResponse>>
+
     //Analysis service
 
-    @GET("analysis")
+    @GET("824aa15eed3dfc815bd0bec5c34354d471a44557")
     fun getAnalysis(
         @HeaderMap headers: Map<String, String>,
         @Query("userId") userId: Int,
@@ -180,7 +180,6 @@ interface FinerioPFMApi: FinerioConnectApi {
     @GET("9d83483fad268a4d685f3e60c01ab804121113a9")
     fun getFinancialEntities(
         @HeaderMap headers: Map<String, String>,
-        @Query("userId") userId: Int,
         @Query("cursor") cursor: Int?
     ): Observable<Result<FCFinancialEntitiesResponse>>
 

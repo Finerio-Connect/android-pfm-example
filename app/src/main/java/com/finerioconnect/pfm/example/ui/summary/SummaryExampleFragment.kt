@@ -39,14 +39,11 @@ class SummaryExampleFragment : Fragment(), OnSummaryViewListener, GetCategoriesL
             configure(requireActivity())
             setListener(this@SummaryExampleFragment)
         }
-        FinerioApi().categories().getAll(371720, null, this)
-    }
-
-    private fun configSummaryView(summary: FCSummaryResponse, categories: List<FCCategory>){
-        val list = arrayListOf<FCResumeTransaction>()
-        list.addAll(getTransactions(summary.incomes, false, categories))
-        list.addAll(getTransactions(summary.expenses, true, categories))
-        mBinding.summaryView.setTransactions(list)
+        if(mCategories.isEmpty()) {
+            FinerioApi().categories().getAll(371720, null, this)
+        } else {
+            FinerioApi().insights().getSummary(371720, null, null, null, this)
+        }
     }
 
     override fun didSelectedResume(resume: FCResume, transactionType: TransactionType) {
@@ -62,13 +59,19 @@ class SummaryExampleFragment : Fragment(), OnSummaryViewListener, GetCategoriesL
     }
 
     override fun categories(categories: List<FCCategory>, nextCursor: Int) {
-        mCategories.clear()
         mCategories.addAll(categories)
         FinerioApi().insights().getSummary(371720, null, null, null, this)
     }
 
     override fun summary(summary: FCSummaryResponse) {
         configSummaryView(summary, mCategories)
+    }
+
+    private fun configSummaryView(summary: FCSummaryResponse, categories: List<FCCategory>){
+        val list = arrayListOf<FCResumeTransaction>()
+        list.addAll(getTransactions(summary.incomes, false, categories))
+        list.addAll(getTransactions(summary.expenses, true, categories))
+        mBinding.summaryView.setTransactions(list)
     }
 
     override fun error(errors: List<FCError>) {

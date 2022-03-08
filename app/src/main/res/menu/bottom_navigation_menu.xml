@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_summary_menu"
         android:title="Summary"/>
     <item
-        android:id="@+id/transactionsMenu"
+        android:id="@+id/movementsMenu"
         android:enabled="true"
         android:icon="@drawable/ic_transactions_menu"
         android:title="Transactions"/>

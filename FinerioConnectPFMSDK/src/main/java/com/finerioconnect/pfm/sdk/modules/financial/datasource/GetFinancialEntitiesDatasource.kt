@@ -5,5 +5,5 @@ import com.finerioconnect.pfm.sdk.base.BaseDatasource
 
 interface GetFinancialEntitiesDatasource : BaseDatasource {
     fun success(success: (FCFinancialEntitiesResponse) -> Unit): GetFinancialEntitiesDatasource
-    fun getFinancialEntities(userId: Int, cursor: Int?)
+    fun getFinancialEntities(cursor: Int?)
 }
