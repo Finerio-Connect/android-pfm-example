@@ -23,7 +23,7 @@ fun getFCCategoryById(categoryId: Int, categories: List<FCCategory>): com.fineri
 
 private fun getCategory(category: FCCategory, subCategories: List<com.finerioconnect.sdk.models.FCCategory>?): com.finerioconnect.sdk.models.FCCategory {
     return com.finerioconnect.sdk.models.FCCategory(
-        category.id.toString(), category.name, "#FFFFFF", "#000000",
+        category.id.toString(), category.name, "#ff939598", "#000000",
         FCImage("no_category", Color.parseColor(category.color ?: "#ff939598")),
         null, subCategories,
         if (category.parentCategoryId == null) null else category.parentCategoryId.toString()
