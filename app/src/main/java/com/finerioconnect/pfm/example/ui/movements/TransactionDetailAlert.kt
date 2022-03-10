@@ -30,11 +30,11 @@ class TransactionDetailAlert(
             setTitle("Transaction detail")
             setView(view)
             if (isUpdate) {
-                setPositiveButton("Update") { dialog, _ ->
+                setPositiveButton("Update") { _, _ ->
                     listener.update(binding.fcTransactionDetailView.getTransaction())
                 }
             }
-            setNegativeButton("Cancelar") { dialog, _ ->
+            setNegativeButton("Cancel") { dialog, _ ->
                 dialog.dismiss()
             }
         }
