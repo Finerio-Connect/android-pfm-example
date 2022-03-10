@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.finerioconnect.pfm.example.R
 import com.finerioconnect.pfm.example.databinding.ActivityMainBinding
 import com.finerioconnect.pfm.example.ui.accounts.AccountsExampleFragment
+import com.finerioconnect.pfm.example.ui.budgets.BudgetsCategoriesExampleFragment
 import com.finerioconnect.pfm.example.ui.budgets.BudgetsExampleFragment
 import com.finerioconnect.pfm.example.ui.movements.MovementsExampleFragment
 import com.finerioconnect.pfm.example.ui.summary.SummaryExampleFragment
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     private val mSummaryExampleFragment = SummaryExampleFragment()
     private val mMovementsExampleFragment = MovementsExampleFragment()
     private val mAccountsExampleFragment = AccountsExampleFragment()
-    private val mBudgetsExampleFragment = BudgetsExampleFragment()
+    private val mBudgetsExampleFragment = BudgetsCategoriesExampleFragment()
 
     private var menuItemId: Int = R.id.summaryMenu
 
