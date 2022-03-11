@@ -6,13 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.accounts.AccountsExampleFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cuentas"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <com.finerioconnect.sdk.account.ui.FCAccountBalanceView
+        android:id="@+id/accountBalanceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

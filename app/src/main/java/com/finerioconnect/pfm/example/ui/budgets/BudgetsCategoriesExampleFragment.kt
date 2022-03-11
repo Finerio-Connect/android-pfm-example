@@ -52,11 +52,12 @@ class BudgetsCategoriesExampleFragment : Fragment() {
             override fun error(errors: List<FCError>) {
                 if (!errors.isEmpty()) {
                     val (_, _, detail) = errors[0]
+                    Log.e("ERROR", detail)
                 }
             }
 
             override fun severError(serverError: Throwable) {
-                Log.e("ERROR", serverError.message!!)
+                Log.e("ERROR", serverError.message.toString())
             }
         })
     }
