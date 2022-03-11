@@ -11,13 +11,11 @@ import com.finerioconnect.core.sdk.models.FCError
 import com.finerioconnect.pfm.example.databinding.FragmentAccountsExampleBinding
 import com.finerioconnect.pfm.sdk.core.FinerioApi
 import com.finerioconnect.pfm.sdk.modules.accounts.listeners.GetAccountsListener
-import com.finerioconnect.pfm.sdk.server.FinerioPFMApi
 import com.finerioconnect.sdk.models.FCAccountBalance
 import com.finerioconnect.sdk.models.FCCredential
 import com.finerioconnect.sdk.shared.enums.FCCredentialStatus
-import java.util.ArrayList
 
-class AccountsExampleFragment: Fragment() {
+class AccountsExampleFragment : Fragment() {
 
     private lateinit var mBinding: FragmentAccountsExampleBinding
 
@@ -35,8 +33,8 @@ class AccountsExampleFragment: Fragment() {
         getAccounts()
     }
 
-    private fun getAccounts(){
-        FinerioApi().accounts().getAll(371720, 0, object: GetAccountsListener{
+    private fun getAccounts() {
+        FinerioApi().accounts().getAll(371720, 0, object : GetAccountsListener {
             override fun accounts(accounts: List<FCAccount>, nextCursor: Int) {
                 showAccounts(accounts)
             }
@@ -76,12 +74,12 @@ class AccountsExampleFragment: Fragment() {
 
         val balance = FCAccountBalance(
             0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
             credentials
         )
 
