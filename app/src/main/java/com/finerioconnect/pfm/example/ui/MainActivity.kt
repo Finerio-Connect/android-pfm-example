@@ -57,9 +57,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         R.id.movementsMenu -> {
             move(id) { transition(mMovementsExampleFragment) }
         }
-        R.id.budgetsMenu -> {
-            move(id) { transition(mBudgetsExampleFragment) }
-        }
         else -> false
     }
 

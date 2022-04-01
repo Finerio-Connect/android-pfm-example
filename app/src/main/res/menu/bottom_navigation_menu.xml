@@ -15,9 +15,4 @@
         android:enabled="true"
         android:icon="@drawable/ic_accounts_menu"
         android:title="Accounts"/>
-    <item
-        android:id="@+id/budgetsMenu"
-        android:enabled="true"
-        android:icon="@drawable/ic_budgets_menu"
-        android:title="Budgets"/>
 </menu>
