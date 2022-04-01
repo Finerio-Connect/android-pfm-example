@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.finerioconnect.core.sdk.models.FCAnalysisByMonth
 import com.finerioconnect.core.sdk.models.FCCategory
 import com.finerioconnect.core.sdk.models.FCError
+import com.finerioconnect.pfm.example.R
 import com.finerioconnect.pfm.example.databinding.FragmentAnalysisExampleBinding
 import com.finerioconnect.pfm.example.mappers.getFCAnalysis
 import com.finerioconnect.pfm.sdk.core.FinerioApi
@@ -16,7 +17,8 @@ import com.finerioconnect.pfm.sdk.modules.insights.listeners.GetAnalysisListener
 import com.finerioconnect.sdk.analysis.ui.listeners.OnFCAnalysisClickListener
 import com.finerioconnect.sdk.models.FCAnalysisCategory
 
-class AnalysisExampleFragment : Fragment(), OnFCAnalysisClickListener, GetCategoriesListener, GetAnalysisListener {
+class AnalysisExampleFragment : Fragment(), OnFCAnalysisClickListener, GetCategoriesListener,
+    GetAnalysisListener {
 
     private lateinit var mBinding: FragmentAnalysisExampleBinding
 
@@ -38,7 +40,15 @@ class AnalysisExampleFragment : Fragment(), OnFCAnalysisClickListener, GetCatego
     }
 
     override fun didSelectedAnalysis(fcAnalysisCategory: FCAnalysisCategory) {
+        val bundle = Bundle()
+        bundle.putParcelable(ANALYSIS_DETAIL_KEY, fcAnalysisCategory)
 
+        val fragment = AnalysisDetailFragment()
+        fragment.arguments = bundle
+        val fragmentTransaction =
+            requireActivity().supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+            .commitAllowingStateLoss()
     }
 
     override fun categories(categories: List<FCCategory>, nextCursor: Int) {
