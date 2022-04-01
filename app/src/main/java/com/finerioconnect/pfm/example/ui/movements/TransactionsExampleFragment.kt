@@ -78,6 +78,7 @@ class TransactionsExampleFragment : Fragment(), OnFCTransactionListListener, Get
     }
 
     override fun transactionCreated(transaction: FCTransaction) {
+        Toast.makeText(requireContext(), "Creada exitosamente!", Toast.LENGTH_SHORT).show()
         FinerioApi().transactions().getAll(743438, HashMap(), this)
     }
 
@@ -101,9 +102,12 @@ class TransactionsExampleFragment : Fragment(), OnFCTransactionListListener, Get
         } catch (e: Exception){
             null
         }
+
+        var date = fcTransaction.date?.time ?: Date().time
+        date = date / 1000 //remove milliseconds
         val request = FCCreateTransactionRequest(
             accountId = 743438,
-            date = fcTransaction.date?.time ?: Date().time,
+            date = date,
             charge = fcTransaction.amount < 0,
             description = fcTransaction.description,
             amount = fcTransaction.amount.toBigDecimal().abs().toDouble(),
