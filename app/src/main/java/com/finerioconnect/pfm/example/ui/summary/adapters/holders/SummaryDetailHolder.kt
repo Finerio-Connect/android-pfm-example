@@ -3,7 +3,6 @@ package com.finerioconnect.pfm.example.ui.summary.adapters.holders
 import android.graphics.Color
 import android.view.View
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.finerioconnect.pfm.example.databinding.ItemSummaryDetailGroupBinding
 import com.finerioconnect.sdk.extensions.formatAmount
