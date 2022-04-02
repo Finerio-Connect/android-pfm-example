@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.finerioconnect.sdk.transaction.ui.components.FCHeaderView
+        android:id="@+id/fcHeaderView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:fcHeaderTitle="@string/resumeDetail" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fcHeaderView"
+        android:orientation="horizontal"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/textviewTotalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_label"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_summary_detail_group"
+        android:layout_marginTop="20dp"
+        android:groupIndicator="@null"
+        android:nestedScrollingEnabled="true"
+        android:layout_below="@id/linearLayoutTotal"
+        android:overScrollMode="never" />
+</RelativeLayout>

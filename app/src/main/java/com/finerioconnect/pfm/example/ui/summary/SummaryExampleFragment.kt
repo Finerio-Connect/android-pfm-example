@@ -18,7 +18,8 @@ import com.finerioconnect.sdk.models.FCResumeTransaction
 import com.finerioconnect.sdk.shared.enums.TransactionType
 import com.finerioconnect.sdk.summary.ui.listeners.OnSummaryViewListener
 
-class SummaryExampleFragment : Fragment(), OnSummaryViewListener, GetCategoriesListener, GetSummaryListener {
+class SummaryExampleFragment : Fragment(), OnSummaryViewListener, GetCategoriesListener,
+    GetSummaryListener {
 
     private lateinit var mBinding: FragmentSummaryExampleBinding
 
@@ -39,7 +40,7 @@ class SummaryExampleFragment : Fragment(), OnSummaryViewListener, GetCategoriesL
             configure(requireActivity())
             setListener(this@SummaryExampleFragment)
         }
-        if(mCategories.isEmpty()) {
+        if (mCategories.isEmpty()) {
             FinerioApi().categories().getAll(371720, null, this)
         } else {
             FinerioApi().insights().getSummary(371720, null, null, null, this)
@@ -47,7 +48,9 @@ class SummaryExampleFragment : Fragment(), OnSummaryViewListener, GetCategoriesL
     }
 
     override fun didSelectedResume(resume: FCResume, transactionType: TransactionType) {
-        //Empty method
+        val bottomFragment = BottomSheetSummaryDetail()
+        bottomFragment.setTransactions(resume.transactions, resume.color)
+        bottomFragment.show(requireActivity().supportFragmentManager, "BottomSheetSummaryDetail")
     }
 
     override fun didTapBarChart(month: String) {
@@ -60,14 +63,14 @@ class SummaryExampleFragment : Fragment(), OnSummaryViewListener, GetCategoriesL
 
     override fun categories(categories: List<FCCategory>, nextCursor: Int) {
         mCategories.addAll(categories)
-        FinerioApi().insights().getSummary(371720, null, null, null, this)
+        FinerioApi().insights().getSummary(371720, 743438, null, null, this)
     }
 
     override fun summary(summary: FCSummaryResponse) {
         configSummaryView(summary, mCategories)
     }
 
-    private fun configSummaryView(summary: FCSummaryResponse, categories: List<FCCategory>){
+    private fun configSummaryView(summary: FCSummaryResponse, categories: List<FCCategory>) {
         val list = arrayListOf<FCResumeTransaction>()
         list.addAll(getTransactions(summary.incomes, false, categories))
         list.addAll(getTransactions(summary.expenses, true, categories))
@@ -81,5 +84,4 @@ class SummaryExampleFragment : Fragment(), OnSummaryViewListener, GetCategoriesL
     override fun severError(serverError: Throwable) {
         //Empty method
     }
-
 }
